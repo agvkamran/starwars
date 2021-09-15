@@ -55,6 +55,19 @@ header {
     color: #fff;
 }
 
+.burger {
+    cursor: pointer;
+    font-size: 36px;
+    display: none;
+    color: #fff;
+}
+
+.lightsaber {
+    height: 40px;
+    width: 40px;
+    transform: rotate(45deg);
+}
+
 .link {
     text-decoration: none;
 }
@@ -80,4 +93,44 @@ header {
 
 .nav_list > .link > li:hover::after {
     width: 100%;
+}
+
+@media screen and (max-width: 1200px) {
+    .nav_list {
+        display: none;
+    }
+    .header_input {
+        max-width: 250px;
+    }
+    .burger {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .search_input {
+        min-width: 200px;
+    }
+    .header_logo {
+        width: 180px;
+        height: 80px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .search_input {
+        min-width: 150px;
+    }
+    .input_elements {
+        justify-content: flex-start;
+    }
+    .header_logo {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 480px){
+    header {
+        padding: 30px 20px;
+    }
 }

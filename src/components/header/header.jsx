@@ -1,8 +1,9 @@
 import React from 'react';
 import './header.css';
-import logo from '../../assets/swyellow.svg';
 import search from '../../assets/search.gif';
 import { Link } from 'react-router-dom';
+import logo from '../../assets/swyellow.svg';
+import lightsaber from '../../assets/lightsaber3.png';
 
 const Header = () => {
     return (
@@ -22,6 +23,12 @@ const Header = () => {
                 <Link to='/starships' className='link'><li>Starships</li></Link>
                 <Link to='/about' className='link'><li>About</li></Link>
             </ul>
+            <div className='burger'>
+                <i class="fas fa-bars"></i>
+                {/* <img src={lightsaber} alt="lightsaber_burger" className='lightsaber'/> */}
+                {/* <img src={lightsaber} alt="lightsaber_burger" className='lightsaber'/> */}
+                {/* <img src={lightsaber} alt="lightsaber_burger" className='lightsaber'/> */}
+            </div>
         </header>
     )
 }

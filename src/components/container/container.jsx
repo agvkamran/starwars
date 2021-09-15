@@ -3,8 +3,6 @@ import './container.css';
 import yoda from '../../assets/yoda.png';
 import robot from '../../assets/robot.png';
 import firstCharacter from '../../assets/character3.png';
-import secondCharacter from '../../assets/character5.png';
-import charactersw from '../../assets/charactersw.png';
 
 const sliderItems = [{
     welcomeText: 'Welcome to our page.',
@@ -18,32 +16,17 @@ const sliderItems = [{
     wishesText: 'On our page you can find out information about all the characters, planets star wars.',
     pleasantText: 'Pleasant viewing!',
     animationUrl: robot,
-    imgUrl: charactersw
-},
-{
-    welcomeText: 'Welcome to our page.',
-    wishesText: 'On our page you can find out information about all the characters, planets star wars.',
-    pleasantText: 'Pleasant viewing!',
-    animationUrl: robot,
     imgUrl: firstCharacter
-},
-{
-    welcomeText: 'Welcome to our page.',
-    wishesText: 'On our page you can find out information about all the characters, planets star wars.',
-    pleasantText: 'Pleasant viewing!',
-    animationUrl: robot,
-    imgUrl: secondCharacter
-},
+}
 ];
 
 const Container = () => {
 
     const [currentSlide, setCurrentSlide] = useState(0);
-    const sliderItemsLength = sliderItems.length;
 
     const setPrevSlide = () => {
         if (currentSlide === 0) {
-            setCurrentSlide(sliderItemsLength - 1)
+            setCurrentSlide(sliderItems.length - 1)
         }
         else {
             setCurrentSlide(currentSlide - 1)
@@ -51,15 +34,13 @@ const Container = () => {
     }
 
     const setNextSlide = () => {
-        if (currentSlide === sliderItemsLength - 1) {
+        if (currentSlide === sliderItems.length - 1) {
             setCurrentSlide(0)
         }
         else {
             setCurrentSlide(currentSlide + 1)
         }
     }
-
-    console.log(currentSlide);
 
     return (
         <div className='container_page'>
@@ -68,14 +49,16 @@ const Container = () => {
                 return (
                     <div>
                         {index === currentSlide && (
-                            <div className='container_page'>
+                            <div className='slide'>
                                 <div className='container_texts'>
                                     <p className='welcome_text'>{item.welcomeText}</p>
                                     <p className='wishes_text'>{item.wishesText}</p>
                                     <p className='pleasant_text'>{item.pleasantText}</p>
                                     <img src={item.animationUrl} className='robot' alt='animation' />
                                 </div>
-                                <img src={item.imgUrl} className='yoda' alt='character_image' />
+                                <div className='yoda_wrapper'>
+                                    <img src={item.imgUrl} className='yoda' alt='character_image' />
+                                </div>
                             </div>
                         )}
                     </div>
