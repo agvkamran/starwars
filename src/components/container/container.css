@@ -42,6 +42,11 @@
     animation: go 5s infinite alternate;
 }
 
+.slider_navigation {
+    cursor: pointer;
+    color: #fff;
+}
+
 @keyframes go {
     0% {
         transform: translateX(0);

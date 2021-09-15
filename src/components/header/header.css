@@ -55,13 +55,19 @@ header {
     color: #fff;
 }
 
-.nav_list > li {
-    cursor: pointer;
-    margin-left: 20px;
-    position: relative;
+.link {
+    text-decoration: none;
 }
 
-.nav_list > li::after {
+.nav_list > .link > li {
+    position: relative;
+    cursor: pointer;
+    margin-left: 20px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav_list > .link > li::after {
     position: absolute;
     top: 20px;
     left: 0;
@@ -72,6 +78,6 @@ header {
     transition: .3s all ease-in;
 }
 
-.nav_list > li:hover::after {
+.nav_list > .link > li:hover::after {
     width: 100%;
 }

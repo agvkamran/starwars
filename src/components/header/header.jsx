@@ -2,6 +2,7 @@ import React from 'react';
 import './header.css';
 import logo from '../../assets/swyellow.svg';
 import search from '../../assets/search.gif';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
@@ -12,14 +13,14 @@ const Header = () => {
                 <button class='button_search'><img src={search} alt="search" className='search' /></button>
             </div>
             <ul className='nav_list'>
-                <li>Home</li>
-                <li>People</li>
-                <li>Planets</li>
-                <li>Films</li>
-                <li>Species</li>
-                <li>Vehicles</li>
-                <li>Starships</li>
-                <li>About</li>
+                <Link to='/' className='link'><li>Home</li></Link>
+                <Link to='/people' className='link'><li>People</li></Link>
+                <Link to='/planets' className='link'><li>Planets</li></Link>
+                <Link to='/films' className='link'><li>Films</li></Link>
+                <Link to='/species' className='link'><li>Species</li></Link>
+                <Link to='/vehicles' className='link'><li>Vehicles</li></Link>
+                <Link to='/starships' className='link'><li>Starships</li></Link>
+                <Link to='/about' className='link'><li>About</li></Link>
             </ul>
         </header>
     )
