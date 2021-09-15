@@ -37,13 +37,18 @@
     width: 300px;
     height: 300px;
     animation-name: go;
-    /* animation-duration: 5s; */
-    /* animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); */
     animation: go 5s infinite alternate;
 }
 
-.slider_navigation {
+.navigation_buttons {
+    background-color: black;
+    border: none;
+}
+
+.fa-chevron-circle-left, .fa-chevron-circle-right {
     cursor: pointer;
+    font-size: 48px;
+    background-color: black;
     color: #fff;
 }
 

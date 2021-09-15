@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import './container.css';
 import yoda from '../../assets/yoda.png';
 import robot from '../../assets/robot.png';
-import firstCharacter from '../../assets/character1.png';
-import secondCharacter from '../../assets/character2.png';
+import firstCharacter from '../../assets/character3.png';
+import secondCharacter from '../../assets/character5.png';
+import charactersw from '../../assets/charactersw.png';
 
 const sliderItems = [{
     welcomeText: 'Welcome to our page.',
@@ -11,6 +12,13 @@ const sliderItems = [{
     pleasantText: 'Pleasant viewing!',
     animationUrl: robot,
     imgUrl: yoda
+},
+{
+    welcomeText: 'Welcome to our page.',
+    wishesText: 'On our page you can find out information about all the characters, planets star wars.',
+    pleasantText: 'Pleasant viewing!',
+    animationUrl: robot,
+    imgUrl: charactersw
 },
 {
     welcomeText: 'Welcome to our page.',
@@ -51,24 +59,34 @@ const Container = () => {
         }
     }
 
-        console.log(currentSlide);
+    console.log(currentSlide);
 
-        return (
-            <div className='container_page'>
-                {sliderItems.map((item, index) => {
-                    return (
-                        <div key={index}>
-                            {item.welcomeText}
-                        </div>
-                    )
-                })}
-                <button onClick={setNextSlide}>Next</button>
-                <button onClick={setPrevSlide}>Prev</button>
-            </div>
-        )
-    }
+    return (
+        <div className='container_page'>
+            <button onClick={setNextSlide} className='navigation_buttons'><i class="fas fa-chevron-circle-left"></i></button>
+            {sliderItems.map((item, index) => {
+                return (
+                    <div>
+                        {index === currentSlide && (
+                            <div className='container_page'>
+                                <div className='container_texts'>
+                                    <p className='welcome_text'>{item.welcomeText}</p>
+                                    <p className='wishes_text'>{item.wishesText}</p>
+                                    <p className='pleasant_text'>{item.pleasantText}</p>
+                                    <img src={item.animationUrl} className='robot' alt='animation' />
+                                </div>
+                                <img src={item.imgUrl} className='yoda' alt='character_image' />
+                            </div>
+                        )}
+                    </div>
+                )
+            })}
+            <button onClick={setPrevSlide} className='navigation_buttons'><i class="fas fa-chevron-circle-right"></i></button>
+        </div>
+    )
+}
 
-    export default Container;
+export default Container;
 
 
 
@@ -77,7 +95,7 @@ const Container = () => {
 
 
 
-    {/* <div className='container_page'>
+{/* <div className='container_page'>
 <p className='slider_navigation'>Prev</p>
 <div className='container_texts'>
     <p className='welcome_text'>Welcome to our page.</p>
