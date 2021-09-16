@@ -3,7 +3,6 @@ import './header.css';
 import search from '../../assets/search.gif';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/swyellow.svg';
-import lightsaber from '../../assets/lightsaber3.png';
 
 const Header = () => {
     return (

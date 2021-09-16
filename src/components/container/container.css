@@ -1,7 +1,7 @@
 .container_page {
     display: flex;
     align-items: center;
-    height: 73vh;
+    /* height: 73vh; */
     padding: 70px;
     justify-content: space-between;
     position: relative;
@@ -10,7 +10,7 @@
 .slide {
     display: flex;
     align-items: center;
-    height: 73vh;
+    /* height: 73vh; */
     padding: 70px;
     justify-content: space-between;
     position: relative;

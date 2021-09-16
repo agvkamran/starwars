@@ -3,7 +3,7 @@ header {
     align-items: center;
     padding: 30px 50px;
     justify-content: space-between;
-    height: 17vh;
+    /* height: 17vh; */
 }
 
 .header_logo {
