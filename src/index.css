@@ -5,3 +5,7 @@
   background-color: #000;
   font-family: Arial;
 }
+
+body {
+  height: 100%;
+}

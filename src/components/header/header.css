@@ -96,14 +96,8 @@ header {
 }
 
 @media screen and (max-width: 1200px) {
-    .nav_list {
-        display: none;
-    }
     .header_input {
         max-width: 250px;
-    }
-    .burger {
-        display: block;
     }
 }
 
@@ -118,15 +112,17 @@ header {
 }
 
 @media screen and (max-width: 600px) {
-    .search_input {
-        min-width: 150px;
-    }
     .input_elements {
         justify-content: flex-start;
     }
-    .header_logo {
-        display: none;
+    header {
+        flex-direction: column;
+        padding: 30px 0px;
     }
+    .nav_list {
+        margin: 20px 0px;
+    }
+
 }
 
 @media screen and (max-width: 480px){

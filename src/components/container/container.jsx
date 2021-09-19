@@ -44,7 +44,7 @@ const Container = () => {
 
     return (
         <div className='container_page'>
-            <button onClick={setNextSlide} className='navigation_buttons'><i class="fas fa-chevron-circle-left"></i></button>
+            <button onClick={setNextSlide} className='navigation_buttons'><i className="fas fa-chevron-circle-left"></i></button>
             {sliderItems.map((item, index) => {
                 return (
                     <div>
@@ -64,7 +64,7 @@ const Container = () => {
                     </div>
                 )
             })}
-            <button onClick={setPrevSlide} className='navigation_buttons'><i class="fas fa-chevron-circle-right"></i></button>
+            <button onClick={setPrevSlide} className='navigation_buttons'><i className="fas fa-chevron-circle-right"></i></button>
         </div>
     )
 }
@@ -73,19 +73,3 @@ export default Container;
 
 
 
-
-
-
-
-
-{/* <div className='container_page'>
-<p className='slider_navigation'>Prev</p>
-<div className='container_texts'>
-    <p className='welcome_text'>Welcome to our page.</p>
-    <p className='wishes_text'>On our page you can find out information about all the characters, planets star wars.</p>
-    <p className='pleasant_text'>Pleasant viewing!</p>
-    <img src={robot} alt="robot" className='robot' />
-</div>
-<img src={yoda} alt="yoda_image" className='yoda' />
-<p className='slider_navigation'>Next</p>
-</div> */}

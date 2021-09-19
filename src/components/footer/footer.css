@@ -1,13 +1,12 @@
-footer {
+footer { 
     display: flex;
     align-items: center;
     text-align: center;
     justify-content: center;
-    /* height: 10vh; */
     color: #fff;
-    padding: 30px;
+    padding: 30px 0;
 }
-
+/* 
 @media screen and (max-width: 960px){
     footer {
         margin-top: 220px;
@@ -24,4 +23,4 @@ footer {
     footer {
         margin-top: 0;
     }
-}
+} */

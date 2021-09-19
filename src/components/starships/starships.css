@@ -1,8 +1,8 @@
-.people_page {
+.starships_page {
     min-height: 75vh;
 }
 
-.people {
+.starships {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -12,7 +12,7 @@
     margin-top: 50px;
 }
 
-.people_block {
+.starships_block {
     margin: 20px;
     border: 3px solid #fff;
     padding: 15px;
@@ -60,16 +60,16 @@
     height: 32px;
 }
 
-.people_block:hover > .people_image {
+.starships_block:hover > .starships_image {
     transform: scale(1.05);
 }
 
-.people_image {
+.starships_image {
     width: 100%;
     transition: .3s all ease;
 }
 
-.input_people {
+.input_starships {
     background-color: #fff;
 }
 
@@ -98,13 +98,13 @@
 }
 
 @media screen and (max-width: 1400px) {
-    .people_block {
+    .starships_block {
         width: 28%;
     }
 }
 
 @media screen and (max-width: 600px) {
-    .people_block {
+    .starships_block {
         width: 55%;
     }
 }
