@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Preloader from '../preloader/preloader';
 import search from '../../assets/search.gif';
 import starship from '../../assets/starship.png';
+import { Link } from 'react-router-dom';
 import './starships.css';
 
 const Starships = () => {
@@ -14,7 +15,7 @@ const Starships = () => {
     const swApi = async () => {
         setLoading(true);
         const response = await fetch(`https://swapi.dev/api/people/?page=${page}`)
-            .then((peopleData) => peopleData.json()).catch(e => console.log('swApi', e))
+            .then((starshipsData) => starshipsData.json()).catch(e => console.log('swApi', e))
         setData({ results: response.results, pages: Math.ceil(response.count / 10) });
         setLoading(false);
     }
@@ -64,18 +65,21 @@ const Starships = () => {
                 </div>
                 <div className='starships'>
                     {filtered.map((item, index) => {
+                        let urlParts = item.url.split('/');
+                        let id = urlParts[urlParts.length - 2];
                         return (
                             <div key={index} className='starships_block'>
-                                <img src={starship} className='starships_image'/>
+                                <img src={starship} className='starships_image' />
                                 <div className='text_block'>
-                                <div className='item'>{item.name}</div>
-                                <div>MGLT: {item.MGLT}</div>
-                                <div>Cargo capacity: {item.cargo_capacity}</div>
-                                <div>Created: {item.created}</div>
-                                <div>Crew: {item.crew}</div>
-                                <div>Manufacturer: {item.manufacturer}</div>
-                                <div>Max Atmosphering Speed: {item.max_atmosphering_speed}</div>
-                            </div>
+                                    <div className='item'>{item.name}</div>
+                                    <div>MGLT: {item.MGLT}</div>
+                                    <div>Cargo capacity: {item.cargo_capacity}</div>
+                                    <div>Created: {item.created}</div>
+                                    <div>Crew: {item.crew}</div>
+                                    <div>Manufacturer: {item.manufacturer}</div>
+                                    <div>Max Atmosphering Speed: {item.max_atmosphering_speed}</div>
+                                    <Link to={`/starships/${id}`}>MoreInfo</Link>
+                                </div>
                             </div>
                         )
                     })}

@@ -3,6 +3,7 @@ import Preloader from '../preloader/preloader';
 import search from '../../assets/search.gif';
 import ch from '../../assets/ch.png';
 import './people.css'
+import { Link } from 'react-router-dom';
 
 const People = () => {
     const [data, setData] = useState({ results: [], pages: 0 });
@@ -15,6 +16,7 @@ const People = () => {
         setLoading(true);
         const response = await fetch(`https://swapi.dev/api/people/?page=${page}`)
             .then((peopleData) => peopleData.json()).catch(e => console.log('swApi', e))
+            console.log(response);
         setData({ results: response.results, pages: Math.ceil(response.count / 10) });
         setLoading(false);
     }
@@ -64,6 +66,8 @@ const People = () => {
                 </div>
                 <div className='people'>
                     {filtered.map((item, index) => {
+                        let urlParts = item.url.split('/');
+                        let id = urlParts[urlParts.length - 2];
                         return (
                             <div key={index} className='people_block'>
                                 <img src={ch} className='people_image' />
@@ -75,18 +79,19 @@ const People = () => {
                                     <div>Skin_color{item.skin_color}</div>
                                     <div>Birth_year{item.birth_year}</div>
                                     <div>Gender{item.gender}</div>
+                                    <Link to={`/people/${id}`}>MoreInfo</Link>
                                 </div>
                             </div>
                         )
                     })}
-            </div >
-            <div className='navigation_buttons'>
-                    <button className='navigation' onClick={prevPage}><i class="fas fa-arrow-left"></i></button>
-                    <button className='navigation' onClick={nextPage}><i class="fas fa-arrow-right"></i></button>
+                </div >
+                <div className='navigation_buttons'>
+                    <button className='navigation' onClick={prevPage}><i className="fas fa-arrow-left"></i></button>
+                    <button className='navigation' onClick={nextPage}><i className="fas fa-arrow-right"></i></button>
                 </div>
             </div >
         )
-return result;
+    return result;
 }
 
 export default People;

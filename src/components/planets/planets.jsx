@@ -3,6 +3,7 @@ import Preloader from '../preloader/preloader';
 import planet from '../../assets/planet.png'
 import search from '../../assets/search.gif';
 import './planets.css';
+import {Link} from "react-router-dom";
 
 const Planets = () => {
     const [data, setData] = useState({ results: [], pages: 0 });
@@ -14,8 +15,9 @@ const Planets = () => {
     const swApi = async () => {
         setLoading(true);
         const response = await fetch(`https://swapi.dev/api/planets/?page=${page}`)
-            .then((peopleData) => peopleData.json()).catch(err => console.log('swApi', err));
+            .then((planetsData) => planetsData.json()).catch(err => console.log('swApi', err));
         setData({ results: response.results, pages: Math.ceil(response.count / 10) });
+        console.log(response);
         setLoading(false);
     }
 
@@ -50,7 +52,6 @@ const Planets = () => {
             if (val.name.toLowerCase() === evt.toLowerCase()) {
                 return true;
             }
-
             return false;
         });
         setFiltered(filtered);
@@ -66,6 +67,8 @@ const Planets = () => {
                 </div>
                 <div className='planets'>
                     {filtered.map((item, index) => {
+                        let urlParts = item.url.split('/');
+                        let id = urlParts[urlParts.length - 2];
                         return (
                             <div key={index} className='planets_block'>
                                 <img src={planet} alt="planet" className='planets_image' />
@@ -76,6 +79,7 @@ const Planets = () => {
                                     <div>Diameter: {item.diameter}</div>
                                     <div>Climate: {item.climate}</div>
                                     <div>Gravity: {item.gravity}</div>
+                                    <Link to={`/planets/${id}`}>MoreInfo</Link>
                                 </div>
                             </div>
                         )
@@ -84,12 +88,11 @@ const Planets = () => {
                     </div>
                 </div>
                 <div className='navigation_buttons'>
-                    <button className='navigation' onClick={prevPage}><i class="fas fa-arrow-left"></i></button>
-                    <button className='navigation' onClick={nextPage}><i class="fas fa-arrow-right"></i></button>
+                    <button className='navigation' onClick={prevPage}><i className="fas fa-arrow-left"></i></button>
+                    <button className='navigation' onClick={nextPage}><i className="fas fa-arrow-right"></i></button>
                 </div>
             </div>
         );
-
     return result;
 }
 
