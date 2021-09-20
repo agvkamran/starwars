@@ -14,6 +14,7 @@ const Planet = () => {
         setLoading(true);
         const response = await fetch(`https://swapi.dev/api/planets/${id}`)
             .then((planetsData) => planetsData.json()).catch(err => console.log('swApi', err));
+            console.log(data)
         setData(response);
         setLoading(false);
     }

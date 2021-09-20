@@ -60,7 +60,7 @@ const Starships = () => {
         : (
             <div className='starships_page'>
                 <div className='input_elements'>
-                    <input type="text" onChange={onChangePeopleValue} value={evt} className='search_input' />
+                    <input type="text" onChange={onChangePeopleValue} value={evt} className='search_input' placeholder='Search starship' />
                     <button className='button_search' onClick={searchPeople}><img src={search} alt="search" className='search' /></button>
                 </div>
                 <div className='starships'>
@@ -69,16 +69,12 @@ const Starships = () => {
                         let id = urlParts[urlParts.length - 2];
                         return (
                             <div key={index} className='starships_block'>
-                                <img src={starship} className='starships_image' />
-                                <div className='text_block'>
-                                    <div className='item'>{item.name}</div>
-                                    <div>MGLT: {item.MGLT}</div>
-                                    <div>Cargo capacity: {item.cargo_capacity}</div>
-                                    <div>Created: {item.created}</div>
-                                    <div>Crew: {item.crew}</div>
-                                    <div>Manufacturer: {item.manufacturer}</div>
-                                    <div>Max Atmosphering Speed: {item.max_atmosphering_speed}</div>
-                                    <Link to={`/starships/${id}`}>MoreInfo</Link>
+                                <img src={starship} className='starships_image' alt='starships_image' />
+                                <div className='text_block_starships'>
+                                    <div className='starships_name'>{item.name}</div>
+                                    <button className='more_info_button'>
+                                        <Link to={`/starships/${id}`} className='more_info'>MoreInfo</Link>
+                                    </button>
                                 </div>
                             </div>
                         )

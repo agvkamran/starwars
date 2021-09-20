@@ -22,6 +22,7 @@
     align-items: center;
     flex-direction: column;
     min-height: 45vh;
+    justify-content: space-between;
 }
 
 .input_elements {
@@ -40,6 +41,7 @@
     padding: 10px;
     border: none;
     border-radius: 30px 0 0 30px;
+    font-size: 16px;
 }
 
 .button_search {
@@ -73,9 +75,50 @@
     background-color: #fff;
 }
 
-.text_block {
-    margin-top: 40px;
-    background-color: #fff;
+.text_block_starships {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background-color: #000;
+}
+
+.more_info_button {
+    cursor: pointer;
+    border-radius: 30px;
+    width: 180px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .8s all ease; 
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.starships_name {
+    margin-top: 15px;
+    font-size: 32px;
+    width: 100%;
+}
+
+.more_info_button:hover {
+    background-color: snow;
+}
+
+.more_info_button:hover .more_info {
+    color: black;
+}
+
+.more_info {
+    text-decoration: none;
+    align-items: center;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    align-items: center;
+    background-color: transparent;
 }
 
 .navigation_buttons {
@@ -100,6 +143,15 @@
 @media screen and (max-width: 1400px) {
     .starships_block {
         width: 28%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .more_info_button {
+        width: 120px;
+    }
+    .more_info {
+        font-size: 14px;
     }
 }
 

@@ -25,13 +25,10 @@ class App extends React.Component {
           <Header />
           <Route exact path='/people' component={People} />
           <Route path='/people/:id' component={Person} />
-          
           <Route exact path='/planets' component={Planets} />
           <Route path="/planets/:id" component={Planet} />
-
           <Route exact path='/starships' component={Starships} />
           <Route path='/starships/:id' component={Starship} />
-
           <Route exact path='/' component={Container} />
           <Route path='/about' component={About} />
           <div className='foot'>

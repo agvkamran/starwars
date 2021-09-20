@@ -3,7 +3,7 @@ import Preloader from '../preloader/preloader';
 import planet from '../../assets/planet.png'
 import search from '../../assets/search.gif';
 import './planets.css';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Planets = () => {
     const [data, setData] = useState({ results: [], pages: 0 });
@@ -62,7 +62,7 @@ const Planets = () => {
         : (
             <div className='planets_page'>
                 <div className='input_elements'>
-                    <input type="text" onChange={onChangePlanetsValue} value={evt} className='search_input' />
+                    <input type="text" onChange={onChangePlanetsValue} value={evt} className='search_input' placeholder='Search planet' />
                     <button className='button_search' onClick={searchPlanet}><img src={search} alt="search" className='search' /></button>
                 </div>
                 <div className='planets'>
@@ -72,14 +72,11 @@ const Planets = () => {
                         return (
                             <div key={index} className='planets_block'>
                                 <img src={planet} alt="planet" className='planets_image' />
-                                <div className='text_block'>
-                                    <div className='item'>{item.name}</div>
-                                    <div>Rotation period: {item.rotation_period}</div>
-                                    <div>Orbital period: {item.orbital_period}</div>
-                                    <div>Diameter: {item.diameter}</div>
-                                    <div>Climate: {item.climate}</div>
-                                    <div>Gravity: {item.gravity}</div>
-                                    <Link to={`/planets/${id}`}>MoreInfo</Link>
+                                <div className='text_block_planets'>
+                                    <div className='planet_name'>{item.name}</div>
+                                    <button className='more_info_button'>
+                                        <Link to={`/planets/${id}`} className='more_info'>More Info</Link>
+                                    </button>
                                 </div>
                             </div>
                         )

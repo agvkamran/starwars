@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Preloader from '../preloader/preloader';
 import { useParams } from "react-router-dom";
 import ch from '../../assets/ch.png';
@@ -15,7 +15,6 @@ const Person = () => {
         const response = await fetch(`https://swapi.dev/api/people/${id}`)
             .then((peopleData) => peopleData.json()).catch(err => console.log('swApi', err));
         setData(response);
-        console.log(response);
         setLoading(false);
     }
 
@@ -26,7 +25,7 @@ const Person = () => {
     let result = loading
         ? <Preloader />
         : <div className='people_block'>
-            <img src={ch} className='people_image' />
+            <img src={ch} className='people_image' alt='people_image' />
             <div className='text_block'>
                 <div>Name: {data.name}</div>
                 <div>Height{data.height}</div>

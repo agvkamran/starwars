@@ -50,7 +50,6 @@ const People = () => {
             if (val.name.toLowerCase() === evt.toLowerCase()) {
                 return true;
             }
-
             return false;
         });
         setFiltered(filtered);
@@ -61,7 +60,7 @@ const People = () => {
         : (
             <div className='people_page'>
                 <div className='input_elements'>
-                    <input type="text" onChange={onChangePeopleValue} value={evt} className='search_input' />
+                    <input type="text" onChange={onChangePeopleValue} value={evt} className='search_input' placeholder='Search character' />
                     <button className='button_search' onClick={searchPeople}><img src={search} alt="search" className='search' /></button>
                 </div>
                 <div className='people'>
@@ -70,16 +69,12 @@ const People = () => {
                         let id = urlParts[urlParts.length - 2];
                         return (
                             <div key={index} className='people_block'>
-                                <img src={ch} className='people_image' />
-                                <div key={index} className='text_block'>
-                                    <div>Name: {item.name}</div>
-                                    <div>Height{item.height}</div>
-                                    <div>Mass{item.mass}</div>
-                                    <div>Hair_color{item.hair_color}</div>
-                                    <div>Skin_color{item.skin_color}</div>
-                                    <div>Birth_year{item.birth_year}</div>
-                                    <div>Gender{item.gender}</div>
-                                    <Link to={`/people/${id}`}>MoreInfo</Link>
+                                <img src={ch} className='people_image' alt='people_image' />
+                                <div key={index} className='text_block_people'>
+                                    <div className='person_name'>Name: {item.name}</div>
+                                    <button className='more_info_button'>
+                                    <Link to={`/people/${id}`} className='more_info'>MoreInfo</Link>
+                                    </button>
                                 </div>
                             </div>
                         )
