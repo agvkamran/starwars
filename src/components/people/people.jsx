@@ -71,7 +71,7 @@ const People = () => {
                             <div key={index} className='people_block'>
                                 <img src={ch} className='people_image' alt='people_image' />
                                 <div key={index} className='text_block_people'>
-                                    <div className='person_name'>Name: {item.name}</div>
+                                    <div className='people_name'>Name: {item.name}</div>
                                     <button className='more_info_button'>
                                     <Link to={`/people/${id}`} className='more_info'>MoreInfo</Link>
                                     </button>
@@ -84,7 +84,7 @@ const People = () => {
                     <button className='navigation' onClick={prevPage}><i className="fas fa-arrow-left"></i></button>
                     <button className='navigation' onClick={nextPage}><i className="fas fa-arrow-right"></i></button>
                 </div>
-            </div >
+            </div>
         )
     return result;
 }

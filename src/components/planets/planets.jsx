@@ -73,7 +73,7 @@ const Planets = () => {
                             <div key={index} className='planets_block'>
                                 <img src={planet} alt="planet" className='planets_image' />
                                 <div className='text_block_planets'>
-                                    <div className='planet_name'>{item.name}</div>
+                                    <div className='planets_name'>{item.name}</div>
                                     <button className='more_info_button'>
                                         <Link to={`/planets/${id}`} className='more_info'>More Info</Link>
                                     </button>

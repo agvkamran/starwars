@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Preloader from '../preloader/preloader';
 import { useParams } from "react-router-dom";
 import planet from '../../assets/planet.png';
-import './planets.css';
+import planet_bgc_image from '../../assets/bgcstars.png';
+import './planet.css';
 
 const Planet = () => {
     let { id } = useParams();
@@ -25,16 +26,17 @@ const Planet = () => {
 
     let result = loading
         ? <Preloader />
-        : <div className='planets_block'>
-            <img src={planet} alt="planet" className='planets_image' />
-            <div className='text_block'>
-                <div className='item'>{data.name}</div>
-                <div>Rotation period: {data.rotation_period}</div>
-                <div>Orbital period: {data.orbital_period}</div>
-                <div>Diameter: {data.diameter}</div>
-                <div>Climate: {data.climate}</div>
-                <div>Gravity: {data.gravity}</div>
-                <div>Residents: {data.residents.map(item => <div><a href={item}>{item}</a></div>)}</div>
+        : <div className='planet_block'>
+            <div className='planet_bgc_image'><img src={planet_bgc_image} alt="planet_bgc_image" /></div>
+            <img src={planet} alt="planet" className='planet_image' />
+            <div className='planet_text_block'>
+                <div className='planet_name'>{data.name}</div>
+                <div className='planet_text'>Rotation period: {data.rotation_period}</div>
+                <div className='planet_text'>Orbital period: {data.orbital_period}</div>
+                <div className='planet_text'>Diameter: {data.diameter}</div>
+                <div className='planet_text'>Climate: {data.climate}</div>
+                <div className='planet_text'>Gravity: {data.gravity}</div>
+                <div className='planet_text'>Residents: {data.residents.map(item => <div><a href={item}>{item}</a></div>)}</div>
             </div>
         </div>
 

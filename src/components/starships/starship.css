@@ -1,0 +1,73 @@
+.starship_block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 75vh;
+    margin: 0 auto;
+    border: 5px solid #fff;
+    width: 50%;
+    padding: 100px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.starship_bgc_image {
+    position: absolute;    
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    transition: 5s all ease-in-out;
+}
+
+.starship_block:hover .person_bgc_image {
+    transform: scale(1.5);
+}
+
+.starship_text_block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: #fff;
+    z-index: 1;
+    background-color: transparent;
+}
+
+.starship_image {
+    z-index: 1;
+}
+.starship_name {
+    font-size: 48px;
+}
+
+.starship_text {
+    font-size: 24px;
+}
+
+@media screen and (max-width: 1300px) {
+    .starship_block {
+        height: 100%;
+        flex-direction: column;
+    }
+    .starship_text_block {
+        margin-top: 20px;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+    .starship_image {
+        width: 180px;
+    }
+    .starship_name {
+        font-size: 36px;
+    }
+    
+    .starship_text {
+        font-size: 16px;
+    }
+}

@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Preloader from '../preloader/preloader';
 import { useParams } from "react-router-dom";
 import ch from '../../assets/ch.png';
-import './people.css';
+import person_block_image from '../../assets/bgcstars.png';
+
+import './person.css';
 
 const Person = () => {
     let { id } = useParams();
@@ -24,16 +26,19 @@ const Person = () => {
 
     let result = loading
         ? <Preloader />
-        : <div className='people_block'>
-            <img src={ch} className='people_image' alt='people_image' />
-            <div className='text_block'>
-                <div>Name: {data.name}</div>
-                <div>Height{data.height}</div>
-                <div>Mass{data.mass}</div>
-                <div>Hair_color{data.hair_color}</div>
-                <div>Skin_color{data.skin_color}</div>
-                <div>Birth_year{data.birth_year}</div>
-                <div>Gender{data.gender}</div>
+        : <div className='person_block'>
+            <div className='person_block_bgc'>
+                <img src={person_block_image} alt="person_image_bgc" className='person_bgc_image' />
+            </div>
+            <img src={ch} className='person_image' alt='people_image' />
+            <div className='person_text_block'>
+                <div className='person_name'>Name: {data.name}</div>
+                <div className='person_text'>Height: {data.height}</div>
+                <div className='person_text'>Mass: {data.mass}</div>
+                <div className='person_text'>Hair_color: {data.hair_color}</div>
+                <div className='person_text'>Skin_color: {data.skin_color}</div>
+                <div className='person_text'>Birth_year: {data.birth_year}</div>
+                <div className='person_text'>Gender: {data.gender}</div>
             </div>
         </div>
 

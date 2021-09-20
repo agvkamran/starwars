@@ -1,0 +1,75 @@
+.planet_block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 75vh;
+    margin: 0 auto;
+    border: 5px solid #fff;
+    width: 50%;
+    padding: 100px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.planet_bgc_image {
+    position: absolute;    
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    transition: 5s all ease-in-out;
+}
+
+.planet_block:hover .planet_bgc_image {
+    transform: scale(1.5);
+}
+
+.planet_text_block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background-color: #000;
+    color: #fff;
+    z-index: 1;
+    background-color: transparent;
+    margin-left: 20px;
+}
+
+.planet_image {
+    z-index: 1;
+}
+.planet_name {
+    font-size: 48px;
+}
+
+.planet_text {
+    font-size: 24px;
+}
+
+@media screen and (max-width: 1300px) {
+    .planet_block {
+        height: 100%;
+        flex-direction: column;
+    }
+    .planet_text_block {
+        margin-top: 20px;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+    .planet_image {
+        width: 180px;
+    }
+    .planet_name {
+        font-size: 36px;
+    }
+    
+    .planet_text {
+        font-size: 16px;
+    }
+}
