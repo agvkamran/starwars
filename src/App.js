@@ -10,10 +10,8 @@ import Planets from './components/planets/planets';
 import Planet from './components/planets/planet';
 import Starships from './components/starships/starships';
 import Starship from './components/starships/starship';
-import About from './components/about/about';
 
 class App extends React.Component {
-
   constructor(props) {
     super();
   }
@@ -30,7 +28,6 @@ class App extends React.Component {
           <Route exact path='/starships' component={Starships} />
           <Route path='/starships/:id' component={Starship} />
           <Route exact path='/' component={Container} />
-          <Route path='/about' component={About} />
           <div className='foot'>
             <Footer />
           </div>

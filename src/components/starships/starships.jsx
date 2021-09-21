@@ -81,8 +81,8 @@ const Starships = () => {
                     })}
                 </div >
                 <div className='navigation_buttons'>
-                    <button className='navigation' onClick={prevPage}><i class="fas fa-arrow-left"></i></button>
-                    <button className='navigation' onClick={nextPage}><i class="fas fa-arrow-right"></i></button>
+                    <button className='navigation' onClick={prevPage}><i className="fas fa-arrow-left"></i></button>
+                    <button className='navigation' onClick={nextPage}><i className="fas fa-arrow-right"></i></button>
                 </div>
             </div >
         )

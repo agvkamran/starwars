@@ -47,7 +47,7 @@ const Container = () => {
             <button onClick={setNextSlide} className='navigation_buttons'><i className="fas fa-chevron-circle-left"></i></button>
             {sliderItems.map((item, index) => {
                 return (
-                    <div>
+                    <div key={index}>
                         {index === currentSlide && (
                             <div className='slide'>
                                 <div className='container_texts'>
