@@ -22,7 +22,7 @@
     transition: 5s all ease-in-out;
 }
 
-.starship_block:hover .person_bgc_image {
+.starship_block:hover .starship_bgc_image {
     transform: scale(1.5);
 }
 
@@ -39,16 +39,19 @@
 
 .starship_image {
     z-index: 1;
+    background-color: transparent;
 }
 .starship_name {
     font-size: 48px;
+    background-color: transparent;
 }
 
 .starship_text {
     font-size: 24px;
+    background-color: transparent;
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1700px) {
     .starship_block {
         height: 100%;
         flex-direction: column;
@@ -56,10 +59,15 @@
     .starship_text_block {
         margin-top: 20px;
     }
-
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1200px) {
+    .starship_image {
+        width: 370px;
+    }
+}
+
+@media screen and (max-width: 800px) {
     .starship_image {
         width: 180px;
     }

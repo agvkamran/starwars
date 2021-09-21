@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Preloader from '../preloader/preloader';
-import planet from '../../assets/planet.png'
+import planetNew from '../../assets/planetNew.png'
 import search from '../../assets/search.gif';
 import './planets.css';
 import { Link } from "react-router-dom";
@@ -71,7 +71,7 @@ const Planets = () => {
                         let id = urlParts[urlParts.length - 2];
                         return (
                             <div key={index} className='planets_block'>
-                                <img src={planet} alt="planet" className='planets_image' />
+                                <img src={planetNew} alt="planet" className='planets_image' />
                                 <div className='text_block_planets'>
                                     <div className='planets_name'>{item.name}</div>
                                         <Link to={`/planets/${id}`} className='more_info'>More Info</Link>

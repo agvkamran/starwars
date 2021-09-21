@@ -26,7 +26,7 @@ const Starship = () => {
         ? <Preloader />
         : <div className='starship_block'>
             <div className='starship_block_bgc'>
-                <img src={starship_block_image} alt="person_image_bgc" className='person_bgc_image' />
+                <img src={starship_block_image} alt="starship_image_bgc" className='starship_bgc_image' />
             </div>
             <img src={starship} className='starship_image' alt='starship_image' />
             <div className='starship_text_block'>

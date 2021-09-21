@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Preloader from '../preloader/preloader';
 import { useParams } from "react-router-dom";
-import planet from '../../assets/planet.png';
+import planetNew from '../../assets/planetNew.png';
 import planet_bgc_image from '../../assets/bgcstars.png';
 import './planet.css';
 
@@ -28,7 +28,7 @@ const Planet = () => {
         ? <Preloader />
         : <div className='planet_block'>
             <div className='planet_bgc_image'><img src={planet_bgc_image} alt="planet_bgc_image" /></div>
-            <img src={planet} alt="planet" className='planet_image' />
+            <img src={planetNew} alt="planet" className='planet_image' />
             <div className='planet_text_block'>
                 <div className='planet_name'>{data.name}</div>
                 <div className='planet_text'>Rotation period: {data.rotation_period}</div>
