@@ -72,9 +72,7 @@ const Starships = () => {
                                 <img src={starship} className='starships_image' alt='starships_image' />
                                 <div className='text_block_starships'>
                                     <div className='starships_name'>{item.name}</div>
-                                    <button className='more_info_button'>
                                         <Link to={`/starships/${id}`} className='more_info'>MoreInfo</Link>
-                                    </button>
                                 </div>
                             </div>
                         )

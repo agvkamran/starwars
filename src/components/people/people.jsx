@@ -72,9 +72,7 @@ const People = () => {
                                 <img src={ch} className='people_image' alt='people_image' />
                                 <div key={index} className='text_block_people'>
                                     <div className='people_name'>Name: {item.name}</div>
-                                    <button className='more_info_button'>
                                     <Link to={`/people/${id}`} className='more_info'>MoreInfo</Link>
-                                    </button>
                                 </div>
                             </div>
                         )

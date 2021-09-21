@@ -82,35 +82,28 @@
     width: 100%;
 }
 
-.more_info_button {
-    cursor: pointer;
+.more_info {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    align-items: center;
+    background-color: transparent;
+    border: 1px solid #fff;
+    padding: 20px;
     border-radius: 30px;
     width: 180px;
     padding: 20px;
     display: flex;
-    align-items: center;
     justify-content: center;
     transition: .8s all ease; 
     margin-top: 15px;
     margin-bottom: 15px;
 }
 
-.more_info_button:hover {
+.more_info:hover {
     background-color: snow;
-}
-
-.more_info_button:hover .more_info {
-    color: black;
-}
-
-.more_info {
-    text-decoration: none;
-    align-items: center;
-    color: #fff;
-    font-size: 18px;
-    text-align: center;
-    align-items: center;
-    background-color: transparent;
+    color: #000;
 }
 
 .navigation_buttons {

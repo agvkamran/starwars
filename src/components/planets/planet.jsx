@@ -36,7 +36,6 @@ const Planet = () => {
                 <div className='planet_text'>Diameter: {data.diameter}</div>
                 <div className='planet_text'>Climate: {data.climate}</div>
                 <div className='planet_text'>Gravity: {data.gravity}</div>
-                <div className='planet_text'>Residents: {data.residents.map(item => <div><a href={item}>{item}</a></div>)}</div>
             </div>
         </div>
 

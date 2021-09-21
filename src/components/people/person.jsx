@@ -35,9 +35,9 @@ const Person = () => {
                 <div className='person_name'>Name: {data.name}</div>
                 <div className='person_text'>Height: {data.height}</div>
                 <div className='person_text'>Mass: {data.mass}</div>
-                <div className='person_text'>Hair_color: {data.hair_color}</div>
-                <div className='person_text'>Skin_color: {data.skin_color}</div>
-                <div className='person_text'>Birth_year: {data.birth_year}</div>
+                <div className='person_text'>Hair color: {data.hair_color}</div>
+                <div className='person_text'>Skin color: {data.skin_color}</div>
+                <div className='person_text'>Birth year: {data.birth_year}</div>
                 <div className='person_text'>Gender: {data.gender}</div>
             </div>
         </div>
