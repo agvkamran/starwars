@@ -12,6 +12,7 @@ const Header = () => {
                 <Link to='/people' className='link'><li>People</li></Link>
                 <Link to='/planets' className='link'><li>Planets</li></Link>
                 <Link to='/starships' className='link'><li>Starships</li></Link>
+                <Link to='/peoplePage' className='link'><li>peoplePage</li></Link>
             </ul>
         </header>
     )

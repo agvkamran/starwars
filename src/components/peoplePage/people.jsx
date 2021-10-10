@@ -2,45 +2,50 @@ import React, { useEffect, useState } from 'react';
 import Preloader from '../preloader/preloader';
 import search from '../../assets/search.gif';
 import ch from '../../assets/ch.png';
-import './people.css'
 import { Link } from 'react-router-dom';
+import { setFilteredAC, setPageAC, setPeopleAC } from '../../redux/reducer';
+import { connect } from 'react-redux';
+import './people.css';
+import { useDispatch } from 'react-redux';
 
-const People = () => {
-    const [data, setData] = useState({ results: [], pages: 0 });
-    const [filtered, setFiltered] = useState([])
+const People = (props) => {
     const [page, setPage] = useState(1);
     const [evt, setEvt] = useState('');
     const [loading, setLoading] = useState(true);
-    
+
+    const dispatch = useDispatch();
+
     const swApi = async () => {
         setLoading(true);
         const response = await fetch(`https://swapi.dev/api/people/?page=${page}`)
-            .then((peopleData) => peopleData.json()).catch(e => console.log('swApi', e))
-            // console.log(response);
-        setData({ results: response.results, pages: Math.ceil(response.count / 10) });
+            .then((peopleData) => peopleData.json()).catch(e => console.log('swApi', e));
+        props.setData(response.results);
+        props.setPage(response.count);
         setLoading(false);
     }
-    
-    console.log(data);
 
     useEffect(() => {
         swApi();
     }, [page]);
 
     useEffect(() => {
-        setFiltered(data.results);
-    }, [data])
+        props.setFiltered("");
+    }, [props.people])
 
     const prevPage = () => {
-        if (page > 1) {
-            setPage(page - 1);
-        }
+        console.log("prevPage");
+        dispatch({ type: "PREV", page: page - 1 });
+        // if (page > 1) {
+        //     setPage(page - 1);
+        // }
     }
 
     const nextPage = () => {
-        if (page < data.pages) {
-            setPage(page + 1);
-        }
+        console.log("nextPage");
+        dispatch({ type: "NEXT", page: page + 1 });
+        // if (page < props.pages) {
+        //     setPage(page + 1);
+        // }
     }
 
     const onChangePeopleValue = (e) => {
@@ -48,14 +53,13 @@ const People = () => {
     }
 
     const searchPeople = () => {
-        console.log(data);
-        let filtered = data.results.filter((val) => {
+        let filtered = props.people.filter((val) => {
             if (val.name.toLowerCase() === evt.toLowerCase()) {
                 return true;
             }
             return false;
         });
-        setFiltered(filtered);
+        props.setFiltered(evt);
     }
 
     let result = loading
@@ -67,7 +71,7 @@ const People = () => {
                     <button className='button_search' onClick={searchPeople}><img src={search} alt="search" className='search' /></button>
                 </div>
                 <div className='people'>
-                    {filtered.map((item, index) => {
+                    {props.filtered?.map((item, index) => {
                         let urlParts = item.url.split('/');
                         let id = urlParts[urlParts.length - 2];
                         return (
@@ -90,4 +94,26 @@ const People = () => {
     return result;
 }
 
-export default People;
+const mapStateToProps = (state) => {
+    return {
+        people: state.dataPage.people,
+        pages: state.dataPage.pages,
+        filtered: state.dataPage.filtered
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setData: (people) => {
+            dispatch(setPeopleAC(people));
+        },
+        setPage: (page) => {
+            dispatch(setPageAC(page));
+        },
+        setFiltered: (query) => {
+            dispatch(setFilteredAC(query));
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(People);

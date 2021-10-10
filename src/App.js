@@ -4,18 +4,18 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './components/header/header';
 import Container from './components/container/container';
 import Footer from './components/footer/footer';
-import People from './components/people/people';
-import Person from './components/people/person';
+import People from './components/peoplePage/people';
+import Person from './components/peoplePage/person';
 import Planets from './components/planets/planets';
 import Planet from './components/planets/planet';
 import Starships from './components/starships/starships';
 import Starship from './components/starships/starship';
+import peoplePage from './components/peoplePage/people';
 
 class App extends React.Component {
   constructor(props) {
     super();
   }
-
   render() {
     return (
       <BrowserRouter>
@@ -28,6 +28,7 @@ class App extends React.Component {
           <Route exact path='/starships' component={Starships} />
           <Route path='/starships/:id' component={Starship} />
           <Route exact path='/' component={Container} />
+          <Route exact path='/peoplePage' component={peoplePage} />
           <div className='foot'>
             <Footer />
           </div>

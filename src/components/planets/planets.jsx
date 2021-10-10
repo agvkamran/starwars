@@ -5,9 +5,10 @@ import search from '../../assets/search.gif';
 import './planets.css';
 import { Link } from "react-router-dom";
 
-const Planets = () => {
+const Planets = (props) => {
+    console.log(props);
     const [data, setData] = useState({ results: [], pages: 0 });
-    const [filtered, setFiltered] = useState([])
+    const [filtered, setFiltered] = useState([]);
     const [page, setPage] = useState(1);
     const [evt, setEvt] = useState('');
     const [loading, setLoading] = useState(true);
@@ -17,7 +18,7 @@ const Planets = () => {
         const response = await fetch(`https://swapi.dev/api/planets/?page=${page}`)
             .then((planetsData) => planetsData.json()).catch(err => console.log('swApi', err));
         setData({ results: response.results, pages: Math.ceil(response.count / 10) });
-        console.log(response);
+        // console.log(response);
         setLoading(false);
     }
 
