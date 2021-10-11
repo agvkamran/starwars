@@ -6,10 +6,13 @@ import Container from './components/container/container';
 import Footer from './components/footer/footer';
 import People from './components/peoplePage/people';
 import Person from './components/peoplePage/person';
-import Planets from './components/planets/planets';
-import Planet from './components/planets/planet';
-import Starships from './components/starships/starships';
-import Starship from './components/starships/starship';
+// import Planets from './components/planets/planets';
+import Planets from './components/planetsPage/planets';
+import Planet from './components/planetsPage/planet';
+// import Starships from './components/starships/starships';
+import Starships from './components/starshipsPage/starships';
+// import Starship from './components/starships/starship';
+import Starship from './components/starshipsPage/starship';
 import peoplePage from './components/peoplePage/people';
 
 class App extends React.Component {

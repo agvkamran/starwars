@@ -1,28 +1,28 @@
 const SET_PAGE = 'SET_PAGE';
-const SET_PERSON = 'SET_PERSON';
-const SET_PEOPLE = 'SET_PEOPLE';
+const SET_PLANET = 'SET_PLANET';
+const SET_PLANETS = 'SET_PLANETS';
 const SET_PAGES = 'SET_PAGES';
 const SEARCH = 'SEARCH';
 
 const initialState = {
     page: 1,
-    person: null,
-    people: [],
+    planet: null,
+    planets: [],
     filtered: [],
     pages: 0
 }
 
-const dataReducer = (state = initialState, action) => {
+const planetsReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_PAGE:
             return {
                 ...state,
                 page: action.page
             }
-        case SET_PEOPLE:
+        case SET_PLANETS:
             return {
                 ...state,
-                people: action.people
+                planets: action.planets
             }
         case SET_PAGES:
             return {
@@ -32,30 +32,30 @@ const dataReducer = (state = initialState, action) => {
         case SEARCH:
             return {
                 ...state,
-                filtered: state.people.filter((val) => {
+                filtered: state.planets.filter((val) => {
                     if (action.query === '' || val.name.toLowerCase() === action.query.toLowerCase()) {
                         return true;
                     }
                     return false;
                 })
             }
-        case SET_PERSON:
+        case SET_PLANET:
             return {
                 ...state,
-                person: action.person
+                planet: action.planet
             }
         default:
             return state;
     }
 }
 
-export const setPersonAC = (person) => ({ type: SET_PERSON, person });
-export const setPeopleAC = (people) => ({ type: SET_PEOPLE, people });
+export const setPlanetAC = (planet) => ({ type: SET_PLANET, planet });
+export const setPlanetsAC = (planets) => ({ type: SET_PLANETS, planets });
 export const setPagesAC = (pages) => ({ type: SET_PAGES, pages });
 export const setFilteredAC = (query) => ({ type: SEARCH, query });
 export const setPageAC = (page) => ({type: SET_PAGE, page});
 
-export default dataReducer;
+export default planetsReducer;
 
 
 

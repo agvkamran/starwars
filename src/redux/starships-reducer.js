@@ -1,61 +1,61 @@
 const SET_PAGE = 'SET_PAGE';
-const SET_PERSON = 'SET_PERSON';
-const SET_PEOPLE = 'SET_PEOPLE';
+const SET_STARSHIP = 'SET_STARSHIP';
+const SET_STARSHIPS = 'SET_STARSHIPS';
 const SET_PAGES = 'SET_PAGES';
 const SEARCH = 'SEARCH';
 
 const initialState = {
     page: 1,
-    person: null,
-    people: [],
+    starship: null,
+    starships: [],
     filtered: [],
     pages: 0
 }
 
-const dataReducer = (state = initialState, action) => {
+const starshipsReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_PAGE:
             return {
                 ...state,
                 page: action.page
-            }
-        case SET_PEOPLE:
+            }        
+        case SET_STARSHIPS:
             return {
                 ...state,
-                people: action.people
+                starships: action.starships
             }
         case SET_PAGES:
             return {
                 ...state,
-                pages: Math.ceil(action.pages / 10)
+                pages: Math.ceil(action.page / 10)
             }
         case SEARCH:
             return {
                 ...state,
-                filtered: state.people.filter((val) => {
+                filtered: state.starships.filter((val) => {
                     if (action.query === '' || val.name.toLowerCase() === action.query.toLowerCase()) {
                         return true;
                     }
                     return false;
                 })
             }
-        case SET_PERSON:
+        case SET_STARSHIP:
             return {
                 ...state,
-                person: action.person
+                starship: action.starship
             }
         default:
             return state;
     }
 }
 
-export const setPersonAC = (person) => ({ type: SET_PERSON, person });
-export const setPeopleAC = (people) => ({ type: SET_PEOPLE, people });
-export const setPagesAC = (pages) => ({ type: SET_PAGES, pages });
+export const setStarshipAC = (starship) => ({ type: SET_STARSHIP, starship });
+export const setStarshipsAC = (starships) => ({ type: SET_STARSHIPS, starships });
+export const setPagesAC = (page) => ({ type: SET_PAGES, page });
 export const setFilteredAC = (query) => ({ type: SEARCH, query });
 export const setPageAC = (page) => ({type: SET_PAGE, page});
 
-export default dataReducer;
+export default starshipsReducer;
 
 
 
