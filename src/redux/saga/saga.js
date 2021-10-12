@@ -1,23 +1,31 @@
-import { race, takeLatest } from 'redux-saga/effects'
+import {spawn} from 'redux-saga/effects';
+import { getDataPlanetsWatcher, getInfoPlanetWatcher } from './planetsPage';
 
-async function getPeople() {
-    // const response = await fetch(`https://swapi.dev/api/people/?page=${page}`);
-    // const peopleData = await response.json();
-    // return peopleData;
-}
+// import { race, takeLatest } from 'redux-saga/effects'
 
-export function* workerSaga(page) {
-    // const people = yield getPeople();
-    console.log(page);
-}
+// async function getPeople() {
+//     // const response = await fetch(`https://swapi.dev/api/people/?page=${page}`);
+//     // const peopleData = await response.json();
+//     // return peopleData;
+// }
 
-export function* watcherSaga(page) {
-    console.log("watcher");
+// export function* workerSaga(page) {
+//     // const people = yield getPeople();
+//     console.log(page);
+// }
 
-    // yield takeLatest('PREV', workerSaga);
-    yield takeLatest('NEXT', workerSaga);
-}
+// export function* watcherSaga(page) {
+//     console.log("watcher");
 
-export default function* rootSaga() {
-    yield watcherSaga();
+//     // yield takeLatest('PREV', workerSaga);
+//     yield takeLatest('NEXT', workerSaga);
+// }
+
+// export default function* rootSaga() {
+//     yield watcherSaga();
+// }
+
+export default function* rootSaga(){
+    yield spawn(getDataPlanetsWatcher)
+    yield spawn(getInfoPlanetWatcher)
 }
