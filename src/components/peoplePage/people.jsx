@@ -1,41 +1,49 @@
 import React, { useEffect, useState } from 'react';
+import './people.css';
 import Preloader from '../preloader/preloader';
 import search from '../../assets/search.gif';
 import ch from '../../assets/ch.png';
 import { Link } from 'react-router-dom';
-import { setFilteredAC, setPageAC, setPagesAC, setPeopleAC } from '../../redux/reducer';
-import { connect } from 'react-redux';
-import './people.css';
+import { setFilteredAC, setPageAC, setPagesAC, setPeopleAC } from '../../redux/people/action-types';
+import { getFirstDataPeopleAC } from '../../redux/saga/peoplePage/action-types';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-const People = (props) => {
-    console.log(props);
-    // const [page, setPage] = useState(1);
+const People = () => { 
     const [evt, setEvt] = useState('');
     const [loading, setLoading] = useState(true);
-
-    // const dispatch = useDispatch();
+    
+    const state = useSelector((state) => state.dataPage);
+    const dispatch = useDispatch();
+    console.log(state);
+    
     const swApi = async () => {
         setLoading(true);
-        const response = await fetch(`https://swapi.dev/api/people/?page=${props.page}`)
-            .then((peopleData) => peopleData.json()).catch(e => console.log('swApi', e));
-        props.setData(response.results);
-        props.setPages(response.count);
+        // const response = await fetch(`https://swapi.dev/api/people/?page=${state.page}`)
+        //     .then((peopleData) => peopleData.json()).catch(e => console.log('swApi', e));
+        // props.setData(response.results);
+        // props.setPages(response.count);
+        // dispatch(setPeopleAC(response.results));
+        // dispatch(setPagesAC(response.count));
+        dispatch(getFirstDataPeopleAC(`https://swapi.dev/api/people/?page=${state.page}`));
         setLoading(false);
     }
 
     useEffect(() => {
         swApi();
-    }, [props.page]);
+    }, [state.page]);
 
     useEffect(() => {
-        props.setFiltered("");
-    }, [props.people])
+        // props.setFiltered("");
+        dispatch(setFilteredAC(''));
+    }, [state.people])
 
     const prevPage = () => {
         // console.log("prevPage");
         // dispatch({ type: "PREV", page: page - 1 });
-        if (props.page > 1) {
-            props.setPage(props.page - 1);
+        if (state.page > 1) {
+            // props.setPage(state.page - 1);
+            dispatch(setPageAC(state.page - 1));
             setEvt("");
         }
     }
@@ -43,8 +51,9 @@ const People = (props) => {
     const nextPage = () => {
         // console.log("nextPage");
         // dispatch({ type: "NEXT", page: page + 1 });
-        if (props.page < props.pages) {
-            props.setPage(props.page + 1);
+        if (state.page < state.pages) {
+            // props.setPage(state.page + 1);
+            dispatch(setPageAC(state.page + 1))
             setEvt("");
         }
     }
@@ -54,7 +63,8 @@ const People = (props) => {
     }
 
     const searchPeople = () => {
-        props.setFiltered(evt);
+        // props.setFiltered(evt);
+        dispatch(setFilteredAC(evt))
     }
 
     let result = loading
@@ -66,7 +76,7 @@ const People = (props) => {
                     <button className='button_search' onClick={searchPeople}><img src={search} alt="search" className='search' /></button>
                 </div>
                 <div className='people'>
-                    {props.filtered?.map((item, index) => {
+                    {state.filtered?.map((item, index) => {
                         let urlParts = item.url.split('/');
                         let id = urlParts[urlParts.length - 2];
                         return (
@@ -89,30 +99,4 @@ const People = (props) => {
     return result;
 }
 
-const mapStateToProps = (state) => {
-    return {
-        people: state.dataPage.people,
-        pages: state.dataPage.pages,
-        filtered: state.dataPage.filtered,
-        page: state.dataPage.page,
-    }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setData: (people) => {
-            dispatch(setPeopleAC(people));
-        },
-        setPages: (pages) => {
-            dispatch(setPagesAC(pages));
-        },
-        setFiltered: (query) => {
-            dispatch(setFilteredAC(query));
-        },
-        setPage: (page) => {
-            dispatch(setPageAC(page));
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(People);
+export default People;

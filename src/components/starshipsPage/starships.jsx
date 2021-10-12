@@ -4,41 +4,47 @@ import search from '../../assets/search.gif';
 import starship from '../../assets/starship.png';
 import { Link } from 'react-router-dom';
 import './starships.css';
-import { connect } from 'react-redux';
-import { setPagesAC, setPageAC, setStarshipsAC, setFilteredAC } from '../../redux/starships-reducer';
+import { setPagesAC, setPageAC, setStarshipsAC, setFilteredAC } from '../../redux/starships/action-types';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { getFirstDataStarshipsAC } from '../../redux/saga/starshipsPage/action-types';
 
+const Starships = () => {
+    const state = useSelector((state) => state.starshipsPage);
+    const dispatch = useDispatch();
 
-const Starships = (props) => {
+    console.log(state);
+
     const [evt, setEvt] = useState('');
     const [loading, setLoading] = useState(true);
 
     const swApi = async () => {
         setLoading(true);
-        const response = await fetch(`https://swapi.dev/api/people/?page=${props.page}`)
-            .then((starshipsData) => starshipsData.json()).catch(e => console.log('swApi', e))
-        props.setStarships(response.results);
-        props.setPages(response.count);
+        dispatch(getFirstDataStarshipsAC(`https://swapi.dev/api/starships/?page=${state.page}`));
         setLoading(false);
     }
 
     useEffect(() => {
         swApi();
-    }, [props.page]);
+    }, [state.page]);
 
     useEffect(() => {
-        props.setFiltered('');
-    }, [props.starships])
+        // props.setFiltered('');
+        dispatch(setFilteredAC(''));
+    }, [state.starships])
 
     const prevPage = () => {
-        if (props.page > 1) {
-            props.setPage(props.page - 1);
+        if (state.page > 1) {
+            // props.setPage(state.page - 1);
+            dispatch(setPageAC(state.page - 1));
             setEvt("");
         }
     }
 
     const nextPage = () => {
-        if (props.page < props.pages) {
-            props.setPage(props.page + 1);
+        if (state.page < state.pages) {
+            // props.setPage(state.page + 1);
+            dispatch(setPageAC(state.page + 1));
             setEvt("");
         }
     }
@@ -48,7 +54,8 @@ const Starships = (props) => {
     }
 
     const searchStarship = () => {
-        props.setFiltered(evt);
+        // props.setFiltered(evt);
+        dispatch(setFilteredAC(evt));
     }
 
     let result = loading
@@ -60,7 +67,7 @@ const Starships = (props) => {
                     <button className='button_search' onClick={searchStarship}><img src={search} alt="search" className='search' /></button>
                 </div>
                 <div className='starships'>
-                    {props?.filtered.map((item, index) => {
+                    {state?.filtered.map((item, index) => {
                         let urlParts = item.url.split('/');
                         let id = urlParts[urlParts.length - 2];
                         return (
@@ -68,7 +75,7 @@ const Starships = (props) => {
                                 <img src={starship} className='starships_image' alt='starships_image' />
                                 <div className='text_block_starships'>
                                     <div className='starships_name'>{item.name}</div>
-                                        <Link to={`/starships/${id}`} className='more_info'>MoreInfo</Link>
+                                    <Link to={`/starships/${id}`} className='more_info'>MoreInfo</Link>
                                 </div>
                             </div>
                         )
@@ -83,30 +90,4 @@ const Starships = (props) => {
     return result;
 }
 
-const mapStateToProps = (state) => {
-    return {
-        starships: state.starshipsPage.starships,
-        pages: state.starshipsPage.pages,
-        filtered: state.starshipsPage.filtered,
-        page: state.starshipsPage.page,
-    }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setStarships: (starships) => {
-            dispatch(setStarshipsAC(starships))
-        },
-        setPages: (pages) => {
-            dispatch(setPagesAC(pages))
-        },
-        setFiltered: (query) => {
-            dispatch(setFilteredAC(query));
-        },
-        setPage: (page) => {
-            dispatch(setPageAC(page));
-        }
-    }
-}
-
-export default connect(mapStateToProps,mapDispatchToProps)(Starships);
+export default Starships;

@@ -1,9 +1,9 @@
 import createSagaMiddleware from "redux-saga";
 import { applyMiddleware, combineReducers, createStore } from "redux";
-import dataReducer from "./reducer";
+import dataReducer from "./people/reducer";
 import rootSaga from "./saga/saga";
 import planetsReducer from "./planets/planets-reducer";
-import starshipsReducer from "./starships-reducer";
+import starshipsReducer from './starships/starships-reducer';
 
 const sagaMiddleWare = createSagaMiddleware();
 

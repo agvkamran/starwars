@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import starship from '../../assets/starship.png';
 import './starship.css';
 import starship_block_image from '../../assets/bgcstars.png';
+import { useSelector } from 'react-redux';
 const Starship = () => {
     let { id } = useParams();
 

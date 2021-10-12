@@ -1,10 +1,4 @@
 import { types } from './action-types';
-// const SET_PAGE = 'SET_PAGE';
-// const SET_PLANET = 'SET_PLANET';
-// const SET_PLANETS = 'SET_PLANETS';
-// const SET_PAGES = 'SET_PAGES';
-// const SEARCH = 'SEARCH';
-
 
 const initialState = {
     page: 1,
@@ -50,12 +44,6 @@ const planetsReducer = (state = initialState, action) => {
             return state;
     }
 }
-
-// export const setPlanetAC = (planet) => ({ type: SET_PLANET, planet });
-// export const setPlanetsAC = (planets) => ({ type: SET_PLANETS, planets });
-// export const setPagesAC = (pages) => ({ type: SET_PAGES, pages });
-// export const setFilteredAC = (query) => ({ type: SEARCH, query });
-// export const setPageAC = (page) => ({type: SET_PAGE, page});
 
 export default planetsReducer;
 

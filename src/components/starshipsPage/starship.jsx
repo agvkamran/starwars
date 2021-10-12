@@ -1,24 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import Preloader from '../preloader/preloader';
 import { useParams } from "react-router-dom";
-import starship from '../../assets/starship.png';
 import './starship.css';
 import starship_block_image from '../../assets/bgcstars.png';
-import { connect } from 'react-redux';
-import { setStarshipAC } from '../../redux/starships-reducer';
+// import { setStarshipAC } from '../../redux/starships/action-types';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import starshipImg from '../../assets/starship.png';
+import { setStarshipAC } from '../../redux/starships/action-types';
+import { getInfoStarshipAC } from '../../redux/saga/starshipsPage/action-types';
 
-const Starship = (props) => {
+const Starship = () => {
     let { id } = useParams();
-
-    // const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
+    const starship = useSelector((state) => state.starshipsPage.starship);
+    const dispatch = useDispatch();
 
     const swApi = async () => {
         setLoading(true);
-        const response = await fetch(`https://swapi.dev/api/starships/${id}`)
-            .then((starshipsData) => starshipsData.json()).catch(err => console.log('swApi', err));
+        // const response = await fetch(`https://swapi.dev/api/starships/${id}`)
+        //     .then((starshipsData) => starshipsData.json()).catch(err => console.log('swApi', err));
         // setData(response);
-        props.setStarship(response);
+        // props.setStarship(response);
+        // dispatch(setStarshipAC(response));    
+        dispatch(getInfoStarshipAC(`https://swapi.dev/api/starships/${id}`));
         setLoading(false);
     }
 
@@ -32,33 +37,19 @@ const Starship = (props) => {
             <div className='starship_block_bgc'>
                 <img src={starship_block_image} alt="starship_image_bgc" className='starship_bgc_image' />
             </div>
-            <img src={starship} className='starship_image' alt='starship_image' />
+            <img src={starshipImg} className='starship_image' alt='starship_image' />
             <div className='starship_text_block'>
-                <div className='starship_name'>{props.starship.name}</div>
-                <div className='starship_text'>MGLT: {props.starship.MGLT}</div>
-                <div className='starship_text'>Cargo capacity: {props.starship.cargo_capacity}</div>
-                <div className='starship_text'>Created: {props.starship.created}</div>
-                <div className='starship_text'>Crew: {props.starship.crew}</div>
-                <div className='starship_text'>Manufacturer: {props.starship.manufacturer}</div>
-                <div className='starship_text'>Max Atmosphering Speed: {props.starship.max_atmosphering_speed}</div>
+                <div className='starship_name'>{starship?.name}</div>
+                <div className='starship_text'>MGLT: {starship?.MGLT}</div>
+                <div className='starship_text'>Cargo capacity: {starship?.cargo_capacity}</div>
+                <div className='starship_text'>Created: {starship?.created}</div>
+                <div className='starship_text'>Crew: {starship?.crew}</div>
+                <div className='starship_text'>Manufacturer: {starship?.manufacturer}</div>
+                <div className='starship_text'>Max Atmosphering Speed: {starship?.max_atmosphering_speed}</div>
             </div>
         </div>
 
     return result;
 }
 
-const mapStateToProps = (state) => {
-    return {
-        starship: state.starshipsPage.starship
-    }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setStarship: (starship) => {
-            dispatch(setStarshipAC(starship))
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Starship);
+export default Starship;

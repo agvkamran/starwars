@@ -1,8 +1,4 @@
-const SET_PAGE = 'SET_PAGE';
-const SET_PERSON = 'SET_PERSON';
-const SET_PEOPLE = 'SET_PEOPLE';
-const SET_PAGES = 'SET_PAGES';
-const SEARCH = 'SEARCH';
+import {types} from './action-types';
 
 const initialState = {
     page: 1,
@@ -14,22 +10,22 @@ const initialState = {
 
 const dataReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SET_PAGE:
+        case types.SET_PAGE:
             return {
                 ...state,
                 page: action.page
             }
-        case SET_PEOPLE:
+        case types.SET_PEOPLE:
             return {
                 ...state,
-                people: action.people
+                people: action.payload
             }
-        case SET_PAGES:
+        case types.SET_PAGES:
             return {
                 ...state,
-                pages: Math.ceil(action.pages / 10)
+                pages: Math.ceil(action.payload / 10)
             }
-        case SEARCH:
+        case types.SEARCH:
             return {
                 ...state,
                 filtered: state.people.filter((val) => {
@@ -39,21 +35,15 @@ const dataReducer = (state = initialState, action) => {
                     return false;
                 })
             }
-        case SET_PERSON:
+        case types.SET_PERSON:
             return {
                 ...state,
-                person: action.person
+                person: action.payload
             }
         default:
             return state;
     }
 }
-
-export const setPersonAC = (person) => ({ type: SET_PERSON, person });
-export const setPeopleAC = (people) => ({ type: SET_PEOPLE, people });
-export const setPagesAC = (pages) => ({ type: SET_PAGES, pages });
-export const setFilteredAC = (query) => ({ type: SEARCH, query });
-export const setPageAC = (page) => ({type: SET_PAGE, page});
 
 export default dataReducer;
 

@@ -1,8 +1,4 @@
-const SET_PAGE = 'SET_PAGE';
-const SET_STARSHIP = 'SET_STARSHIP';
-const SET_STARSHIPS = 'SET_STARSHIPS';
-const SET_PAGES = 'SET_PAGES';
-const SEARCH = 'SEARCH';
+import { types } from "./action-types";
 
 const initialState = {
     page: 1,
@@ -14,22 +10,22 @@ const initialState = {
 
 const starshipsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SET_PAGE:
+        case types.SET_PAGE:
             return {
                 ...state,
                 page: action.page
-            }        
-        case SET_STARSHIPS:
+            }
+        case types.SET_STARSHIPS:
             return {
                 ...state,
-                starships: action.starships
+                starships: action.payload
             }
-        case SET_PAGES:
+        case types.SET_PAGES:
             return {
                 ...state,
-                pages: Math.ceil(action.page / 10)
+                pages: Math.ceil(action.payload / 10)
             }
-        case SEARCH:
+        case types.SEARCH:
             return {
                 ...state,
                 filtered: state.starships.filter((val) => {
@@ -39,21 +35,15 @@ const starshipsReducer = (state = initialState, action) => {
                     return false;
                 })
             }
-        case SET_STARSHIP:
+        case types.SET_STARSHIP:
             return {
                 ...state,
-                starship: action.starship
+                starship: action.payload
             }
         default:
             return state;
     }
 }
-
-export const setStarshipAC = (starship) => ({ type: SET_STARSHIP, starship });
-export const setStarshipsAC = (starships) => ({ type: SET_STARSHIPS, starships });
-export const setPagesAC = (page) => ({ type: SET_PAGES, page });
-export const setFilteredAC = (query) => ({ type: SEARCH, query });
-export const setPageAC = (page) => ({type: SET_PAGE, page});
 
 export default starshipsReducer;
 

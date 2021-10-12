@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { getFirstDataPlanetsAC } from '../../redux/saga/planetsPage/action-types';
 
-const Planets = (props) => {
+const Planets = () => {
     const [evt, setEvt] = useState('');
     const [loading, setLoading] = useState(true);
     const state = useSelector((state) => state.planetsPage);
@@ -20,7 +20,6 @@ const Planets = (props) => {
 
     const swApi = async () => {
         setLoading(true);
-        console.log(getFirstDataPlanetsAC())
         dispatch(getFirstDataPlanetsAC(`https://swapi.dev/api/planets/?page=${state.page}`))
         // const response = await fetch(`https://swapi.dev/api/planets/?page=${state.page}`)
         //     .then((planetsData) => planetsData.json()).catch(err => console.log('swApi', err));
@@ -29,8 +28,6 @@ const Planets = (props) => {
         
         // dispatch(setPlanetsAC(response.results));
         // dispatch(setPagesAC(response.count))
-
-        
         setLoading(false);
     }
 
