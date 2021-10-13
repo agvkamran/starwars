@@ -27,7 +27,6 @@ const Planet = () => {
     let result = loading
         ? <Preloader />
         : <div className='planet_block'>
-            {console.log(planet)}
             <div className='planet_bgc_image'><img src={planet_bgc_image} alt="planet_bgc_image" /></div>
             <img src={planetNew} alt="planet" className='planet_image' />
             <div className='planet_text_block'>

@@ -3,11 +3,9 @@ import Preloader from '../preloader/preloader';
 import { useParams } from "react-router-dom";
 import './starship.css';
 import starship_block_image from '../../assets/bgcstars.png';
-// import { setStarshipAC } from '../../redux/starships/action-types';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import starshipImg from '../../assets/starship.png';
-import { setStarshipAC } from '../../redux/starships/action-types';
 import { getInfoStarshipAC } from '../../redux/saga/starshipsPage/action-types';
 
 const Starship = () => {
@@ -17,12 +15,7 @@ const Starship = () => {
     const dispatch = useDispatch();
 
     const swApi = async () => {
-        setLoading(true);
-        // const response = await fetch(`https://swapi.dev/api/starships/${id}`)
-        //     .then((starshipsData) => starshipsData.json()).catch(err => console.log('swApi', err));
-        // setData(response);
-        // props.setStarship(response);
-        // dispatch(setStarshipAC(response));    
+        setLoading(true);  
         dispatch(getInfoStarshipAC(`https://swapi.dev/api/starships/${id}`));
         setLoading(false);
     }

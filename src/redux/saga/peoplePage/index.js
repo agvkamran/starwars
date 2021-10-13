@@ -28,6 +28,5 @@ export function* getInfoPersonWatcher() {
 
 function* getInfoPersonWorker({ payload }) {
     const data = yield call(getInfoPerson, payload);
-    console.log(data);
     yield put({ type: 'SET_PERSON', payload: data });
 }

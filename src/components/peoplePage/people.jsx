@@ -4,27 +4,20 @@ import Preloader from '../preloader/preloader';
 import search from '../../assets/search.gif';
 import ch from '../../assets/ch.png';
 import { Link } from 'react-router-dom';
-import { setFilteredAC, setPageAC, setPagesAC, setPeopleAC } from '../../redux/people/action-types';
+import { setFilteredAC, setPageAC } from '../../redux/people/action-types';
 import { getFirstDataPeopleAC } from '../../redux/saga/peoplePage/action-types';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
-const People = () => { 
+const People = () => {
     const [evt, setEvt] = useState('');
     const [loading, setLoading] = useState(true);
-    
+
     const state = useSelector((state) => state.dataPage);
     const dispatch = useDispatch();
-    console.log(state);
-    
+
     const swApi = async () => {
         setLoading(true);
-        // const response = await fetch(`https://swapi.dev/api/people/?page=${state.page}`)
-        //     .then((peopleData) => peopleData.json()).catch(e => console.log('swApi', e));
-        // props.setData(response.results);
-        // props.setPages(response.count);
-        // dispatch(setPeopleAC(response.results));
-        // dispatch(setPagesAC(response.count));
         dispatch(getFirstDataPeopleAC(`https://swapi.dev/api/people/?page=${state.page}`));
         setLoading(false);
     }
@@ -34,25 +27,18 @@ const People = () => {
     }, [state.page]);
 
     useEffect(() => {
-        // props.setFiltered("");
         dispatch(setFilteredAC(''));
     }, [state.people])
 
     const prevPage = () => {
-        // console.log("prevPage");
-        // dispatch({ type: "PREV", page: page - 1 });
         if (state.page > 1) {
-            // props.setPage(state.page - 1);
             dispatch(setPageAC(state.page - 1));
             setEvt("");
         }
     }
 
     const nextPage = () => {
-        // console.log("nextPage");
-        // dispatch({ type: "NEXT", page: page + 1 });
         if (state.page < state.pages) {
-            // props.setPage(state.page + 1);
             dispatch(setPageAC(state.page + 1))
             setEvt("");
         }
@@ -63,7 +49,6 @@ const People = () => {
     }
 
     const searchPeople = () => {
-        // props.setFiltered(evt);
         dispatch(setFilteredAC(evt))
     }
 

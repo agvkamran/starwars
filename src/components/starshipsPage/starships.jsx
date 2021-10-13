@@ -13,8 +13,6 @@ const Starships = () => {
     const state = useSelector((state) => state.starshipsPage);
     const dispatch = useDispatch();
 
-    console.log(state);
-
     const [evt, setEvt] = useState('');
     const [loading, setLoading] = useState(true);
 
@@ -29,13 +27,11 @@ const Starships = () => {
     }, [state.page]);
 
     useEffect(() => {
-        // props.setFiltered('');
         dispatch(setFilteredAC(''));
     }, [state.starships])
 
     const prevPage = () => {
         if (state.page > 1) {
-            // props.setPage(state.page - 1);
             dispatch(setPageAC(state.page - 1));
             setEvt("");
         }
@@ -43,7 +39,6 @@ const Starships = () => {
 
     const nextPage = () => {
         if (state.page < state.pages) {
-            // props.setPage(state.page + 1);
             dispatch(setPageAC(state.page + 1));
             setEvt("");
         }
@@ -54,7 +49,6 @@ const Starships = () => {
     }
 
     const searchStarship = () => {
-        // props.setFiltered(evt);
         dispatch(setFilteredAC(evt));
     }
 

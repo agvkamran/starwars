@@ -4,8 +4,7 @@ import planetNew from '../../assets/planetNew.png'
 import search from '../../assets/search.gif';
 import './planets.css';
 import { Link } from "react-router-dom";
-// import { setPagesAC, setPlanetsAC, setFilteredAC, setPageAC } from '../../redux/planets/planets-reducer';
-import { setPagesAC, setPlanetsAC, setFilteredAC, setPageAC } from '../../redux/planets/action-types';
+import { setFilteredAC, setPageAC } from '../../redux/planets/action-types';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { getFirstDataPlanetsAC } from '../../redux/saga/planetsPage/action-types';
@@ -14,20 +13,11 @@ const Planets = () => {
     const [evt, setEvt] = useState('');
     const [loading, setLoading] = useState(true);
     const state = useSelector((state) => state.planetsPage);
-    const planets = useSelector((state) => state.planetsPage.planets);
     const dispatch = useDispatch();
-    console.log(state);
-
+    
     const swApi = async () => {
         setLoading(true);
-        dispatch(getFirstDataPlanetsAC(`https://swapi.dev/api/planets/?page=${state.page}`))
-        // const response = await fetch(`https://swapi.dev/api/planets/?page=${state.page}`)
-        //     .then((planetsData) => planetsData.json()).catch(err => console.log('swApi', err));
-        // props.setPlanets(response.results);
-        // props.setPages(response.count);
-        
-        // dispatch(setPlanetsAC(response.results));
-        // dispatch(setPagesAC(response.count))
+        dispatch(getFirstDataPlanetsAC(`https://swapi.dev/api/planets/?page=${state.page}`));
         setLoading(false);
     }
 
@@ -36,22 +26,19 @@ const Planets = () => {
     }, [state.page]);
 
     useEffect(() => {
-        // props.setFiltered('');
         dispatch(setFilteredAC(''));
     }, [state.planets])
 
     const prevPage = () => {
         if (state.page > 1) {
-            // props.setPage(state.page - 1);
-            dispatch(setPageAC(state.page - 1))
+            dispatch(setPageAC(state.page - 1));
             setEvt("");
         }
     }
 
     const nextPage = () => {
         if (state.page < state.pages) {
-            // props.setPage(state.page + 1);
-            dispatch(setPageAC(state.page + 1))
+            dispatch(setPageAC(state.page + 1));
             setEvt("");
         }
     }
@@ -61,8 +48,7 @@ const Planets = () => {
     }
 
     const searchPlanet = () => {
-        // props.setFiltered(evt);
-        dispatch(setFilteredAC(evt))
+        dispatch(setFilteredAC(evt));
     }
 
     let result = loading
@@ -99,31 +85,4 @@ const Planets = () => {
     return result;
 }
 
-// const mapStateToProps = (state) => {
-//     return {
-//         planets: state.planetsPage.planets,
-//         pages: state.planetsPage.pages,
-//         filtered: state.planetsPage.filtered,
-//         page: state.planetsPage.page,
-//     }
-// }
-
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         setPlanets: (planets) => {
-//             dispatch(setPlanetsAC(planets))
-//         },
-//         setPages: (pages) => {
-//             dispatch(setPagesAC(pages))
-//         },
-//         setFiltered: (query) => {
-//             dispatch(setFilteredAC(query));
-//         },
-//         setPage: (page) => {
-//             dispatch(setPageAC(page))
-//         }
-//     }
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Planets);
 export default Planets;

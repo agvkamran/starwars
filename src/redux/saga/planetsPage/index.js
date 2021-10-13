@@ -28,6 +28,5 @@ export function* getInfoPlanetWatcher() {
 
 function* getInfoPlanetWorker({ payload }) {
     const data = yield call(getInfoPlanet, payload);
-    console.log(data);
     yield put({ type: 'SET_PLANET', payload: data });
 }

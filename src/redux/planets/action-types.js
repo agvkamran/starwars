@@ -3,9 +3,11 @@ export const types = {
     SET_PLANET:'SET_PLANET',
     SET_PLANETS:'SET_PLANETS',
     SET_PAGES: 'SET_PAGES',
-    SEARCH: 'SEARCH'
+    SEARCH: 'SEARCH',
+    IS_LOADING: 'IS_LOADING'
 }
 
+export const setLoadingAC = (isLoading) => ({type: types.IS_LOADING, isLoading});
 export const setPlanetAC = (planet) => ({ type: types.SET_PLANET, planet });
 export const setPlanetsAC = (planets) => ({ type: types.SET_PLANETS, planets });
 export const setPagesAC = (pages) => ({ type: types.SET_PAGES, pages });

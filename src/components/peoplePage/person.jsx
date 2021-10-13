@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import ch from '../../assets/ch.png';
 import person_block_image from '../../assets/bgcstars.png';
 import './person.css';
-// import { setPersonAC } from '../../redux/people/action-types';
 import { getInfoPersonAC } from '../../redux/saga/peoplePage/action-types';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
@@ -19,11 +18,7 @@ const Person = () => {
 
     const swApi = async () => {
         setLoading(true);
-        // const response = await fetch(`https://swapi.dev/api/people/${id}`)
-        //     .then((peopleData) => peopleData.json()).catch(err => console.log('swApi', err));
         dispatch(getInfoPersonAC(`https://swapi.dev/api/people/${id}`));
-        // props.setPerson(response);
-        // dispatch(setPersonAC(response));
         setLoading(false);
     }
 

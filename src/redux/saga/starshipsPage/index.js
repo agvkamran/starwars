@@ -28,6 +28,5 @@ export function* getInfoStarshipWatcher() {
 
 function* getInfoStarshipWorker({ payload }) {
     const data = yield call(getInfoStarship, payload);
-    console.log(data);
     yield put({ type: 'SET_STARSHIP', payload: data });
 }
